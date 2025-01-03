@@ -11,7 +11,9 @@
     font-family: 'Noto Sans'sans-serif;
 }
 @layer components {
-    .Button-Nav {
-        @apply font-Noto-sans text-base bg-slate-300 rounded-lg px-2 py-2 hover:bg-slate-500
-    }
+   .Button-Nav {
+    @apply font-Noto-sans text-base bg-slate-300 rounded-lg px-2 py-2 
+           hover:bg-slate-500 transition-all duration-300 ease-in-out;
+}
+
 }

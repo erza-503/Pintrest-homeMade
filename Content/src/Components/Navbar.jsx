@@ -4,7 +4,7 @@ import Profile from "../assets/Profile.jpg"
 const Navbar = () => {
   return (
     <div className="flex w-full justify-between align-middle items-center text-center gap-4 pt-4 px-5">
-      <div className="flex justify-between items-center w-min">
+      <div className="flex justify-between items-center w-[15%]">
         <img src={logo} alt="Pinterest Logo" className="w-8 m-2 rounded-full" />
         <div>
           <ul className="flex flex-row gap-3 ">
@@ -22,7 +22,8 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      <div className="flex flex-row gap-3 bg-slate-200 text-gray-500 w-full mx-10 py-2 px-4 rounded-xl">
+
+      <div className="flex flex-row gap-3 bg-slate-200 text-gray-500 mx-10 py-2 px-4 rounded-xl w-[75%]">
         <span className="magnifer" />
         <input
           type="text"
@@ -30,10 +31,15 @@ const Navbar = () => {
           className="bg-transparent w-full placeholder: text-gray-500 focus:outline-none"
         />
       </div>
-      <div className=" text-gray-500 flex flex-row gap-3 justify-center align-middle items-center w-48">
+
+      <div className=" text-gray-500 flex flex-row gap-3 justify-center align-middle items-center w-[10%]">
         <span className="bell"></span>
         <span className="chat"></span>
-        <img src={Profile} alt="Profile Picture" className="w-8 m-2 rounded-full"/>
+        <img
+          src={Profile}
+          alt="Profile Picture"
+          className="w-8 m-2 rounded-full"
+        />
       </div>
     </div>
   );

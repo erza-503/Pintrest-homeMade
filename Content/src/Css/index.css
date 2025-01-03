@@ -1,3 +1,6 @@
+/* Noto font  */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,9 +8,10 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Noto Sans'sans-serif;
 }
 @layer components {
     .Button-Nav {
-        @apply font-sans
+        @apply font-Noto-sans text-base bg-slate-300 rounded-lg px-2 py-2 hover:bg-slate-500
     }
 }

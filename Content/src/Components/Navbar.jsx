@@ -1,23 +1,46 @@
 import logo from "../assets/Pinterest-logo.png";
 import Profile from "../assets/Profile.jpg"
+import {useLocation} from "react-router-dom"
 
 const Navbar = () => {
+  const location = useLocation()
+  const isActive = (path) => location.pathname === path ;
+  
   return (
     <div className="flex w-full justify-between align-middle items-center text-center gap-4 pt-4 px-5">
       <div className="flex justify-between items-center w-[15%]">
         <img src={logo} alt="Pinterest Logo" className="w-8 m-2 rounded-full" />
         <div>
-          <ul className="flex flex-row gap-3 ">
+          <ul className="flex flex-row gap-3">
             <li>
-              <a href="" className="Button-Nav">
+              <a
+                href="/"
+                className={`Button-Nav ${
+                  isActive("/") ? "Button-Nav-Active" : ""
+                }`}
+              >
                 Beranda
               </a>
             </li>
             <li>
-              <a href="">Jelajahi</a>
+              <a
+                href="/jelajahi"
+                className={`Button-Nav ${
+                  isActive("/jelajahi") ? "Button-Nav-Active" : ""
+                }`}
+              >
+                Jelajahi
+              </a>
             </li>
             <li>
-              <a href="">Buat</a>
+              <a
+                href="/buat"
+                className={`Button-Nav ${
+                  isActive("/buat") ? "Button-Nav-Active" : ""
+                }`}
+              >
+                Buat
+              </a>
             </li>
           </ul>
         </div>

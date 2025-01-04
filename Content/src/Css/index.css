@@ -12,8 +12,11 @@
 }
 @layer components {
    .Button-Nav {
-    @apply font-Noto-sans text-base bg-slate-300 rounded-lg px-2 py-2 
+    @apply font-Noto-sans text-base bg-none rounded-lg px-2 py-2 
            hover:bg-slate-500 transition-all duration-300 ease-in-out;
+}
+   .Button-Nav-Active {
+    @apply font-Noto-sans text-base bg-slate-300 rounded-lg px-2 py-2 ;
 }
 
 }

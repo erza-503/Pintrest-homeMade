@@ -31,8 +31,8 @@ const Home = () => {
     fetchPhotos();
   }, []);
 
-  if (loading) return <p>Fetching data...</p>;
-  if (err) return <p>{err}</p>;
+//   if (loading) return <p>Fetching data...</p>;
+//   if (err) return <p>{err}</p>;
 
   return (
     <div>

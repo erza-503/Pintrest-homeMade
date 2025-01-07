@@ -5,7 +5,7 @@ import Navbar from "../Components/Navbar";
 const Home = () => {
   const [photo, setPhoto] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [err, setErr] = useState("");
+  
 
   // useEffect(() => {
   //   const fetchPhotos = async () => {
@@ -30,31 +30,42 @@ useEffect(() => {
   const dataPhoto = async() => {
     setLoading(true)
     try{
-      const response = await axios.get()
+      const response = await axios.get(`https://picsum.photos/seed/${index}/info`)
+      setPhoto(response.data)
+    }catch(err){
+      console.log(err)
+    }finally{
+      setLoading(false)
+    } dataPhoto();
     }
-  }
-})
+  }, [])
 
  const renderImages = () => {
    const images = [];
    for (let index = 1; index < 10; index++) {
      images.push(
-       <img
-         key={index} // Gunakan index sebagai key
-         src={`https://picsum.photos/seed/${index}/400/300`}
-         alt={`Random ${index}`}
-         className="rounded-md "
-       />
+       <div key={`image-${index}`} className="p-4 border rounded-md shadow-md">
+         <img
+           src={`https://picsum.photos/seed/${index}/400/300`}
+           alt={`Random image with seed ${index}`}
+           className="rounded-md w-full h-auto"
+         />
+         <p className="mt-2 text-sm text-gray-600">
+           {dataPhoto}
+         </p>
+       </div>
      );
    }
-   return images;
+   return <div className="grid grid-cols-3 gap-4">{images}</div>;
  };
+
 
   return (
     <div>
       <Navbar />
       <div className="grid grid-cols-4 gap-4 m-2">
         {renderImages()}
+        
         {renderImages()}
         {renderImages()}
       </div>

@@ -5,7 +5,7 @@ import Navbar from "../Components/Navbar";
 const Home = () => {
   const [photo, setPhoto] = useState([]);
   const [loading, setLoading] = useState(false);
-  
+   const [err, setErr] = useState(null);
 
   // useEffect(() => {
   //   const fetchPhotos = async () => {
@@ -23,75 +23,78 @@ const Home = () => {
   //   fetchPhotos();
   // }, []);
 
-//   if (loading) return <p>Fetching data...</p>;
-//   if (err) return <p>{err}</p>;
+  //  const renderImages = () => {
+  //    const images = [];
+  //    for (let index = 1; index < 10; index++) {
+  //      images.push(
+  //        <div key={`image-${index}`} className="p-4 border rounded-md shadow-md">
+  //          <img
+  //            src={`https://picsum.photos/seed/${index}/400/300`}
+  //            alt={`Random image with seed ${index}`}
+  //            className="rounded-md w-full h-auto"
+  //          />
+  //          <p className="mt-2 text-sm text-gray-600">
+  //            {dataPhoto}
+  //          </p>
+  //        </div>
+  //      );
+  //    }
+  //    return <div className="grid grid-cols-3 gap-4">{images}</div>;
+  //  };
 
-useEffect(() => {
-  const dataPhoto = async() => {
-    setLoading(true)
-    try{
-      const response = await axios.get(`https://picsum.photos/seed/${index}/info`)
-      setPhoto(response.data)
-    }catch(err){
-      console.log(err)
-    }finally{
-      setLoading(false)
-    } dataPhoto();
-    }
-  }, [])
+  useEffect(() => {
+    const dataPhoto = async () => {
+      setLoading(true);
+      try {
+        const data = [];
+        for (let index = 1; index < 20; index++) {
+          data.push(
+            axios
+              .get(`https://picsum.photos/seed/${index}/info`)
+              .then((res) => ({
+                id: index,
+                ...res.data,
+              }))
+          );
+        }
+        const Hasildata = await Promise.all(data);
+        setPhoto(Hasildata);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    dataPhoto()
+  }, []);
 
- const renderImages = () => {
-   const images = [];
-   for (let index = 1; index < 10; index++) {
-     images.push(
-       <div key={`image-${index}`} className="p-4 border rounded-md shadow-md">
-         <img
-           src={`https://picsum.photos/seed/${index}/400/300`}
-           alt={`Random image with seed ${index}`}
-           className="rounded-md w-full h-auto"
-         />
-         <p className="mt-2 text-sm text-gray-600">
-           {dataPhoto}
-         </p>
-       </div>
-     );
-   }
-   return <div className="grid grid-cols-3 gap-4">{images}</div>;
- };
-
+    if (loading) return <p>Fetching data...</p>;
+    if (err) return <p>{err}</p>;
 
   return (
     <div>
       <Navbar />
-      <div className="grid grid-cols-4 gap-4 m-2">
-        {renderImages()}
-        
-        {renderImages()}
-        {renderImages()}
-      </div>
-    <div>
-      
-    </div>
-      {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      <div className="grid w-max">
-        {photo.length > 0 ? (
-          photo.map((random) => (
-            <div key={random.id} className="grid px-2">
-              <img
-                src={random.urls.small}
-                alt={random.alt_description || "Random Photo"}
-                className="h-auto w-min rounded-lg "
+
+      <div className="">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-full w-max">
+          {photo.length > 0 ? (
+            photo.map((random) => (
+              <div key={`image-${random.id}`} className="grid px-2">
+                <img
+                  src={`https://picsum.photos/seed/${random.id}/400/300`}
+                  alt={`Random image with seed ${random.id}`}
+                  className="h-auto w-min rounded-lg "
                 />
-              <p className="text-center font-Noto-sans font-semibold">
-                {random.user.name}
-              </p>
-            </div>
-          ))
-        ) : (
-          <p>No photos available.</p>
-        )}
+                <p className="text-center font-Noto-sans font-semibold">
+                  {random.author}
+                </p>
+              </div>
+            ))
+          ) : (
+            <p>No photos available.</p>
+          )}
+        </div>
       </div>
-        </div> */}
     </div>
   );
 };

@@ -78,18 +78,23 @@ const Home = () => {
       <div className="">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-full w-max">
           {photo.length > 0 ? (
-            photo.map((random) => (
-              <div key={`image-${random.id}`} className="grid px-2">
+            photo.map((random) => {
+              const randomWeight = Math.floor(Math.random()*200) +200;
+              const randomHeight = Math.floor(Math.random()*300) +300
+              return(
+
+                <div key={`image-${random.id}`} className="grid px-2 ">
                 <img
-                  src={`https://picsum.photos/seed/${random.id}/400/300`}
+                  src={`https://picsum.photos/seed/${random.id}/${randomWeight}/${randomHeight}`}
                   alt={`Random image with seed ${random.id}`}
                   className="h-auto w-min rounded-lg "
-                />
+                  />
                 <p className="text-center font-Noto-sans font-semibold">
                   {random.author}
                 </p>
               </div>
-            ))
+                )
+              })
           ) : (
             <p>No photos available.</p>
           )}

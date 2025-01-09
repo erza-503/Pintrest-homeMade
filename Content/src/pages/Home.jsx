@@ -47,7 +47,7 @@ const Home = () => {
       setLoading(true);
       try {
         const data = [];
-        for (let index = 1; index < 20; index++) {
+        for (let index = 1; index < Math.floor(Math.random()*10)*2; index++) {
           data.push(
             axios
               .get(`https://picsum.photos/seed/${index}/info`)
@@ -71,34 +71,41 @@ const Home = () => {
     if (loading) return <p>Fetching data...</p>;
     if (err) return <p>{err}</p>;
 
-  return (
-    <div>
-      <Navbar />
-
-      <div className="">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-full w-max">
+    const randomPhoto = () =>{
+      return (
+        <div className="flex flex-col w-max ">
           {photo.length > 0 ? (
             photo.map((random) => {
-              const randomWeight = Math.floor(Math.random()*200) +200;
-              const randomHeight = Math.floor(Math.random()*300) +300
-              return(
-
+              const randomWeight = Math.floor(Math.random() * 200) + 200;
+              const randomHeight = Math.floor(Math.random() * 300) + 300;
+              return (
                 <div key={`image-${random.id}`} className="grid px-2 ">
-                <img
-                  src={`https://picsum.photos/seed/${random.id}/${randomWeight}/${randomHeight}`}
-                  alt={`Random image with seed ${random.id}`}
-                  className="h-auto w-min rounded-lg "
+                  <img
+                    src={`https://picsum.photos/seed/${random.id}/${randomWeight}/${randomHeight}`}
+                    alt={`Random image with seed ${random.id}`}
+                    className="h-auto w-min rounded-lg "
                   />
-                <p className="text-center font-Noto-sans font-semibold">
-                  {random.author}
-                </p>
-              </div>
-                )
-              })
+                  <p className="text-center font-Noto-sans font-semibold">
+                    {random.author}
+                  </p>
+                </div>
+              );
+            })
           ) : (
             <p>No photos available.</p>
           )}
         </div>
+      );
+    }
+
+  return (
+    <div>
+      <Navbar />
+
+      <div className="grid grid-cols-4 w-full">
+        {randomPhoto()}
+        {randomPhoto()}
+        {randomPhoto()}
       </div>
     </div>
   );

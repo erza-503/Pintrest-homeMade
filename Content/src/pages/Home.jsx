@@ -76,7 +76,7 @@ const PinterestLayout = () => {
 				<ResponsiveMasonry
 					columnsCountBreakPoints={{ 350: 2, 750: 3, 1024: 4 }}
 				>
-					<Masonry gutter="16px">
+					<Masonry gutter="18px">
 						{photo.length > 0 ? (
 							photo.map((random) => {
 								const randomWidth =

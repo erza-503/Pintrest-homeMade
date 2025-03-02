@@ -8,4 +8,4 @@ Proyek ini bertujuan untuk melatih dan meningkatkan kemampuan frontend developme
 - Mengimplementasikan fungsi interaktif seperti infinite scrolling dan hover effects.
 
 
-02-03-2025 "selesai sampai disini dulu "
+02-03-2025 

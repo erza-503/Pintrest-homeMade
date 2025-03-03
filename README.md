@@ -6,3 +6,6 @@ Proyek ini bertujuan untuk melatih dan meningkatkan kemampuan frontend developme
 - Meningkatkan kemampuan dalam membuat layout grid yang responsif.
 - Mengasah keterampilan styling dengan CSS atau framework seperti TailwindCSS.
 - Mengimplementasikan fungsi interaktif seperti infinite scrolling dan hover effects.
+
+
+02-03-2025 "selesai sampai disini dulu "
